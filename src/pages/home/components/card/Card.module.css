@@ -52,13 +52,3 @@
     text-align: center;
     color: #ABBBC2;
 }
-
-.card-item button {
-    background: #EA7C69;
-    width: 100%;
-    color: #FFFFFF;
-}
-
-.card-item button:hover {
-    background: #f69786;
-}

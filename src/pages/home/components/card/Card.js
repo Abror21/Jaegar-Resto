@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import classes from './Card.module.css'
+import Button from '../../../../components/Button'
 
 const Card = forwardRef(({ meal }, ref) => {
     return (
@@ -10,7 +11,7 @@ const Card = forwardRef(({ meal }, ref) => {
                     <h6>{meal.title}</h6>
                     <span>$ {meal.price}</span>
                     <p>{meal.available} bowls available</p>
-                    <button className='btn'>Add</button>
+                    <Button title="Add"/>
                 </div>
             </div>
         </div>

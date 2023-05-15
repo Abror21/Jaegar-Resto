@@ -1,5 +1,5 @@
 import classes from './Search.module.css';
-import search from '../../../../assets/images/search.png';
+import search from '../../../../assets/icons/search.png';
 
 const Search = ({ searchFood }) => {
     return (

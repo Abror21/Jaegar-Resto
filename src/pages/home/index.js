@@ -4,6 +4,18 @@ import Header from './components/header/Header';
 import Menu from './components/menu/Menu';
 import { createList } from '../../services/create-list';
 
+const sortList = (sortBy, setMealList, list) => {
+    if (sortBy.toLowerCase() === 'title') {
+        setMealList([...list.sort((a, b) => {
+            if (a.title < b.title) return -1;
+            if (a.title > b.title) return 1;
+            return 0;
+        })])
+    } else {
+        setMealList([...list.sort((a, b) => a.price - b.price)]);
+    }
+}
+
 const Home = () => {
     const [mealList, setMealList] = useState([]);
     const [activeMenu, setActiveMenu] = useState('Hot Dishes');
@@ -26,15 +38,7 @@ const Home = () => {
                 localFoodList = localFoodList.filter(food => food.title.toLowerCase().includes(foodSearch.toLowerCase()))
             }
             if (sortBy) {
-                if (sortBy.toLowerCase() === 'title') {
-                    setMealList([...localFoodList.sort((a, b) => {
-                        if (a.title < b.title) return -1;
-                        if (a.title > b.title) return 1;
-                        return 0;
-                    })])
-                } else {
-                    setMealList([...localFoodList.sort((a, b) => a.price - b.price)]);
-                }
+                sortList(sortBy, setMealList, localFoodList)
             } else {
                 setMealList([...localFoodList]);
             }
@@ -48,15 +52,7 @@ const Home = () => {
             if (foodSearch) {
                 localFoodList = localFoodList.filter(food => food.title.toLowerCase().includes(foodSearch.toLowerCase()))
             }
-            if (sortBy.toLowerCase() === 'title') {
-                setMealList([...localFoodList.sort((a, b) => {
-                    if (a.title < b.title) return -1;
-                    if (a.title > b.title) return 1;
-                    return 0;
-                })])
-            } else {
-                setMealList([...localFoodList.sort((a, b) => a.price - b.price)]);
-            }
+            sortList(sortBy, setMealList, localFoodList)
         }
     }, [sortBy]);
 
@@ -81,6 +77,7 @@ const Home = () => {
             <Header searchFood={food => setFoodSearch(food)} />
             <Menu activeMenu={activeMenu} changeMenu={menu => setActiveMenu(menu)} />
             <Content mealList={mealList} changeSort={sortBy => setSortBy(sortBy)} isFoodLoading={isFoodLoading} />
+
         </>
     )
 }
