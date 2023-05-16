@@ -4,7 +4,7 @@ export const createList = () => {
     const list = [];
     for (let i = 1; i <= 12; i++) {
         const food = {
-            id: i,
+            id: Date.now() + i,
             title: randomWords(6).join(' '),
             price: randomPrice(),
             available: randomNumber(),

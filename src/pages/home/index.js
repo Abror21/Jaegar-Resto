@@ -77,7 +77,6 @@ const Home = () => {
             <Header searchFood={food => setFoodSearch(food)} />
             <Menu activeMenu={activeMenu} changeMenu={menu => setActiveMenu(menu)} />
             <Content mealList={mealList} changeSort={sortBy => setSortBy(sortBy)} isFoodLoading={isFoodLoading} />
-
         </>
     )
 }

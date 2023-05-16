@@ -1,8 +1,10 @@
-import { forwardRef } from 'react'
+import { forwardRef, useContext } from 'react'
 import classes from './Card.module.css'
 import Button from '../../../../components/Button'
+import { contextData } from '../../../../services/context-store'
 
 const Card = forwardRef(({ meal }, ref) => {
+    const { addToStore } = useContext(contextData);
     return (
         <div className='col-sm-6 col-md-4 col-lg-3' ref={ref}>
             <div className={classes.card}>
@@ -11,7 +13,7 @@ const Card = forwardRef(({ meal }, ref) => {
                     <h6>{meal.title}</h6>
                     <span>$ {meal.price}</span>
                     <p>{meal.available} bowls available</p>
-                    <Button title="Add"/>
+                    <Button title="Add" handleClick={() => addToStore(meal)}/>
                 </div>
             </div>
         </div>

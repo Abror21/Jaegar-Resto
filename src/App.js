@@ -5,7 +5,7 @@ import Graph from "./pages/graph";
 import Home from "./pages/home";
 import Notification from "./pages/notification";
 import Message from './pages/message';
-import ContextProvider from './services/tab-context';
+import ContextProvider from './services/context-store';
 import Cart from './layout/cart';
 
 
