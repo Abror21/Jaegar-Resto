@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import orderImg from '../../../../assets/images/order-img.png';
-import Button from '../../../../components/Button';
+import Button from '../../../../components/button';
 import classes from './index.module.css';
 import { contextData } from '../../../../services/context-store';
 
 const EmptyCart = () => {
-    const { activeTab, changeActiveTab } = useContext(contextData);
+    const { changeActiveTab } = useContext(contextData);
     return (
         <div className={`${classes['empty-cart']}`}>
             <h4>Orders</h4>

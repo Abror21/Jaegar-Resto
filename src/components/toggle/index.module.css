@@ -1,0 +1,22 @@
+.toggle{
+    background: #252836;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(100%);
+    z-index: 101;
+    overflow-y: auto;
+    transition: .5s;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+}
+.toggle.active{
+    transform: translateX(0);
+}
+@media(max-width: 570px){
+    .toggle{
+        width: 100%;
+    }
+}

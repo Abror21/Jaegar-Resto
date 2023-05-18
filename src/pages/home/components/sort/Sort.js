@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import { KeyboardArrowDown } from '@mui/icons-material';
 
 const Sort = ({ changeSort }) => {
-    const [sortBy, setSortBy] = useState('')
+    const [sortBy, setSortBy] = useState('');
 
     const handleChange = event => {
         changeSort(event.target.value);

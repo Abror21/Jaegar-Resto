@@ -4,6 +4,7 @@ import EmptyCart from './components/empty-cart';
 import { contextData } from '../../services/context-store';
 import FullCart from './components/full-cart';
 import PaymentCart from './components/payment-cart';
+import Toggle from '../../components/toggle';
 
 const Cart = () => {
   const [paymentCart, setPaymentCart] = useState(false);
@@ -12,16 +13,16 @@ const Cart = () => {
   useEffect(() => {
     setPaymentCart(false);
   }, [activeTab])
-  
+
   return (
     <>
       <div className={`${classes['cart-back']} ${activeTab === 7 ? classes.active : ''}`} onClick={() => changeActiveTab(2)} />
-      <div className={`${classes['toggle-cart']}  ${(activeTab === 7 && !paymentCart) ? classes.active : ''}`}>
+      <Toggle active={(activeTab === 7 && !paymentCart) ? true : false}>
         {orderList?.length ? <FullCart handleClick={() => setPaymentCart(true)} /> : <EmptyCart />}
-      </div>
-      <div className={`${classes['toggle-payment']} ${(paymentCart && activeTab === 7) && classes.active}`}>
-          <PaymentCart />
-      </div>
+      </Toggle>
+      <Toggle active={(paymentCart && activeTab === 7) ? true : false}>
+        <PaymentCart />
+      </Toggle>
     </>
   )
 }

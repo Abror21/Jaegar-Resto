@@ -2,11 +2,11 @@ import classes from './index.module.css';
 import backArrow from '../../../../assets/icons/back-arrow.png';
 import { useContext, useState } from 'react';
 import { contextData } from '../../../../services/context-store';
-import Button from '../../../../components/Button';
+import Button from '../../../../components/button';
 import AddedFood from '../added-food';
 import FlipMove from 'react-flip-move';
 
-const FullCart = ({handleClick}) => {
+const FullCart = ({ handleClick }) => {
     const [activeBtn, setActiveBtn] = useState(1);
     const { changeActiveTab, orderList } = useContext(contextData);
     const totalPrice = orderList.reduce((initial, obj) => initial + (obj.quantity * obj.price), 0).toFixed(2);
@@ -44,7 +44,7 @@ const FullCart = ({handleClick}) => {
                     <p><span>Discount</span> $0</p>
                     <p><span>Total Price</span> ${totalPrice}</p>
                 </div>
-                <Button title="Continue to Payment" handleClick={handleClick}/>
+                <Button title="Continue to Payment" handleClick={handleClick} />
             </div>
         </div>
     )
