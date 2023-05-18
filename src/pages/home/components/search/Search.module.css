@@ -41,7 +41,25 @@
     opacity: 0;
     pointer-events: none;
 }
-
+@media(max-width: 580px){
+    .header__search{
+        max-width: 325px;
+    }
+    .header__search input{
+        padding-left: 45px;
+    }
+    .header__search img{
+        width: 25px;
+        height: 25px;
+    }
+}
+@media(max-width: 512px){
+.header__search{
+    max-width: unset;
+    width: 100%;
+    margin-top: 15px;
+}
+}
 @media(max-width: 425px){
     .header__search{
         margin-top: 15px;

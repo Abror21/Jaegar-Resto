@@ -6,7 +6,7 @@ import { contextData } from '../../../../services/context-store'
 const Card = forwardRef(({ meal }, ref) => {
     const { addToStore } = useContext(contextData);
     return (
-        <div className='col-sm-6 col-md-4 col-lg-3' ref={ref}>
+        <div className='col-sm-6 col-xl-4 col-xxl-3' ref={ref}>
             <div className={classes.card}>
                 <div className={classes['card-item']}>
                     <img src={meal.url} alt={meal.title} />

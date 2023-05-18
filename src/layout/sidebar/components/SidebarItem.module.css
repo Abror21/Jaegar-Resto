@@ -165,6 +165,13 @@
     }
 }
 
+@media(max-width: 1120px) {
+    .icon {
+        width: 45px;
+        height: 45px;
+    }
+}
+
 @media(max-width: 1024px) {
     .item {
         overflow: unset;
@@ -184,11 +191,6 @@
     .item button .top-curve,
     .item button .bottom-curve {
         display: none;
-    }
-
-    .icon {
-        width: 45px;
-        height: 45px;
     }
 
     .item button svg {
