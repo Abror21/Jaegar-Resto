@@ -6,7 +6,7 @@ const getList = () => {
     if (localStorage['order-list']) {
         return JSON.parse(localStorage['order-list'])
     }
-    return []
+    return [];
 }
 const ContextProvider = ({ children }) => {
 
@@ -42,6 +42,10 @@ const ContextProvider = ({ children }) => {
         localStorage.setItem('order-list', JSON.stringify(parsedOrderList));
         setOrderList(JSON.parse(localStorage.getItem('order-list')));
     }
+    const resetOrderList = () => {
+        localStorage.clear('order-list');
+        setOrderList(getList());
+    }
     const changeActiveTab = (id) => setActiveTab(id)
 
     const value = {
@@ -49,7 +53,8 @@ const ContextProvider = ({ children }) => {
         orderList,
         changeActiveTab,
         addToStore,
-        removeFromStore
+        removeFromStore,
+        resetOrderList
     }
     return (
         <contextData.Provider value={value}>

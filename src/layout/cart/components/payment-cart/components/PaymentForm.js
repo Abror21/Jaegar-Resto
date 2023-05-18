@@ -1,10 +1,12 @@
-
+import { useContext } from 'react';
 import Button from '../../../../../components/button';
 import Input from '../../../../../components/input/Input';
 import { useInput } from '../../../../../hooks/use-input';
 import classes from './PaymentForm.module.css';
+import { contextData } from '../../../../../services/context-store';
 
 const PaymentForm = () => {
+    const { changeActiveTab, resetOrderList } = useContext(contextData);
 
     const {
         inputChange: nameInputChange,
@@ -12,7 +14,8 @@ const PaymentForm = () => {
         inputTouch: nameInputTouch,
         value: name,
         inputIsValid: nameIsValid,
-        inputIsError: nameInputIsError
+        inputIsError: nameInputIsError,
+        inputClear: nameInputClear
     } = useInput(name => name.trim().length > 0);
     const {
         inputChange: numberInputChange,
@@ -20,7 +23,8 @@ const PaymentForm = () => {
         inputTouch: numberInputTouch,
         value: number,
         inputIsValid: numberIsValid,
-        inputIsError: numberInputIsError
+        inputIsError: numberInputIsError,
+        inputClear: numberInputClear
     } = useInput(number => number.trim().length > 18);
     const {
         inputChange: dateInputChange,
@@ -28,7 +32,8 @@ const PaymentForm = () => {
         inputTouch: dateInputTouch,
         value: date,
         inputIsValid: dateIsValid,
-        inputIsError: dateInputIsError
+        inputIsError: dateInputIsError,
+        inputClear: dateInputClear
     } = useInput(date => date.trim().length > 6);
     const {
         inputChange: cvvInputChange,
@@ -36,18 +41,33 @@ const PaymentForm = () => {
         inputTouch: cvvInputTouch,
         value: cvv,
         inputIsValid: cvvIsValid,
-        inputIsError: cvvInputIsError
+        inputIsError: cvvInputIsError,
+        inputClear: cvvInputClear
     } = useInput(cvv => cvv.trim().length > 2);
 
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('sumib asd fasdf');
+        nameInputTouch();
+        numberInputTouch();
+        dateInputTouch();
+        cvvInputTouch();
+        if(nameIsValid && numberIsValid && dateIsValid && cvvIsValid){
+            nameInputClear();
+            numberInputClear();
+            dateInputClear();
+            cvvInputClear();
+            changeActiveTab(2);
+            resetOrderList();
+            alert("ORDER IS SUCCESSFUL!");
+            return
+        }
+        return;
     }
 
     return (
         <form className={classes.form} onSubmit={handleSubmit}>
-            <div>
+            <div className={classes['inputs-wrapper']}>
                 <Input
                     type="text"
                     label="Cardholder Name"
@@ -59,7 +79,7 @@ const PaymentForm = () => {
                     placeholder='Cardholder Name'
                 />
                 <Input
-                    format="#### #### #### ####"
+                    mask="9999 9999 9999 9999"
                     label="Card Number"
                     inputIsError={numberInputIsError}
                     value={number}
@@ -70,7 +90,7 @@ const PaymentForm = () => {
                 />
                 <div className={classes['div-group']}>
                     <Input
-                        format="##/####"
+                        mask="99/9999"
                         label="Expiration Date"
                         inputIsError={dateInputIsError}
                         value={date}
@@ -80,7 +100,7 @@ const PaymentForm = () => {
                         placeholder='Expiration date'
                     />
                     <Input
-                        format="###"
+                        mask="999"
                         label="CVV"
                         inputIsError={cvvInputIsError}
                         value={cvv}
@@ -106,8 +126,8 @@ const PaymentForm = () => {
                 </div>
             </div>
             <div className={classes.btns}>
-                <button className={`${classes.cancel} btn`}>Cancel</button>
-                <Button title='Confirm Payment' type='submit' />
+                <button className={`${classes.cancel} btn`} type='button' onClick={() => changeActiveTab(2)}>Cancel</button>
+                <Button title='Confirm Payment' type='submit'/>
             </div>
         </form>
     )

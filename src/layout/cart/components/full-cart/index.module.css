@@ -1,8 +1,6 @@
-.full-cart {
-    /* background: #252836; */
-    padding: 30px 30px 70px;
+.full-cart{
+    width: 100%;
 }
-
 .header {
     padding-bottom: 20px;
     border-bottom: 1px solid #393C49;
@@ -92,7 +90,6 @@
 }
 
 .footer div p {
-    margin: 0;
     display: flex;
     justify-content: space-between;
 }

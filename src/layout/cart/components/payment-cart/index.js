@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import classes from './index.module.css';
-import Button from '../../../../components/button';
 import PaymentForm from './components/PaymentForm';
 
 const PaymentCart = () => {
@@ -37,7 +36,9 @@ const PaymentCart = () => {
             <h6>Cash</h6>
           </div>
         </div>
-        <PaymentForm />
+        {paymentMethod === 1 && <PaymentForm />}
+        {paymentMethod === 2 && <p style={{fontSize: '20px', color: 'red', marginTop: '50px'}}><b>Paypal</b> Payment Not Available yet</p>}
+        {paymentMethod === 3 && <p style={{fontSize: '20px', color: 'red', marginTop: '50px'}}><b>Cash</b> Payment Not Available yet</p>}
       </div>
     </div>
   )

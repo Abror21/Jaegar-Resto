@@ -7,6 +7,8 @@ const reducer = (state, action) => {
         return { ...state, value: action.value };
     } else if (action.type === 'BLUR') {
         return { ...state, touched: true }
+    }else if(action.type === 'CLEAR'){
+        return {value: '', touched: false}
     }
     return state;
 }
@@ -15,7 +17,6 @@ export const useInput = (inputValidation = () => { }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const inputChange = (e) => {
-        console.log(e.target.value.trim().length);
         dispatch({ type: "VALUE", value: e.target.value });
     }
     const inputBlur = e => {
@@ -23,6 +24,9 @@ export const useInput = (inputValidation = () => { }) => {
     }
     const inputTouch = () => {
         dispatch({ type: "BLUR" })
+    }
+    const inputClear = () => {
+        dispatch({type: 'CLEAR'})
     }
 
     let inputIsValid = inputValidation(state.value);
@@ -32,6 +36,7 @@ export const useInput = (inputValidation = () => { }) => {
         inputChange,
         inputBlur,
         inputTouch,
+        inputClear,
         value: state.value,
         inputIsValid,
         inputIsError,
