@@ -130,7 +130,42 @@
     fill: #fff;
 }
 
-@media(max-width: 425px) {
+
+.badge {
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+
+.bump {
+    animation: bump 300ms ease-out;
+}
+
+
+@keyframes bump {
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(0.9);
+    }
+
+    30% {
+        transform: scale(1.5);
+    }
+
+    50% {
+        transform: scale(2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media(max-width: 1024px) {
     .item {
         overflow: unset;
         padding: 0;
@@ -159,38 +194,5 @@
     .item button svg {
         width: 15px;
         height: 15px;
-    }
-}
-
-.badge {
-    font-size: 10px;
-    width: 18px;
-    height: 18px;
-}
-
-
-.bump {
-    animation: bump 300ms ease-out;
-}
-
-@keyframes bump {
-    0% {
-        transform: scale(1);
-    }
-
-    10% {
-        transform: scale(0.9);
-    }
-
-    30% {
-        transform: scale(1.5);
-    }
-
-    50% {
-        transform: scale(2);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
