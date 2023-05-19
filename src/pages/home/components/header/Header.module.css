@@ -22,6 +22,9 @@
 
 
 @media(max-width: 425px){
+    .header{
+        padding: 20px 0;
+    }
     .header>div{
         flex-direction: column;
     }
